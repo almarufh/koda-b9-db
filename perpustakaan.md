@@ -9,13 +9,14 @@ erDiagram
 KATEGORI {
     id int PK
     nama string
-    deskripsi string
 }
+
 RAK_BUKU {
     id int PK
     nama string
     lokasi string
 }
+
 BUKU {
     id int PK
     id_kategori int FK
