@@ -1,4 +1,4 @@
-INSERT INTO kategori (nama) VALUES
+INSERT INTO kategori ("nama") VALUES
 ('Teknologi Informasi'),
 ('Sains dan Matematika'),
 ('Sastra dan Fiksi'),
@@ -10,7 +10,7 @@ INSERT INTO kategori (nama) VALUES
 ('Kesehatan dan Kedokteran'),
 ('Hukum dan Politik');
 
-INSERT INTO rak_buku (name, lokasi) VALUES
+INSERT INTO rak_buku ("name", "lokasi") VALUES
 ('Rak TI-01', 'Lantai 1 - Sayap Timur'),
 ('Rak TI-02', 'Lantai 1 - Sayap Timur'),
 ('Rak SN-01', 'Lantai 1 - Sayap Barat'),
@@ -22,7 +22,7 @@ INSERT INTO rak_buku (name, lokasi) VALUES
 ('Rak FL-01', 'Lantai 3 - Area Tengah'),
 ('Rak HK-01', 'Lantai 1 - Area Tengah');
 
-INSERT INTO buku (id_kategori, id_rak, judul, penulis, penerbit, tahun, stok) VALUES
+INSERT INTO buku ("id_kategori", "id_rak", "judul", "penulis", "penerbit", "tahun", "stok") VALUES
 (1, 1, 'Mendesain Database Modern', 'Hadi Wijaya', 'Informatika', 2021, 12),
 (1, 2, 'Panduan Praktis SQL', 'Bambang Subroto', 'Elex Media', 2020, 8),
 (2, 3, 'Matematika Diskrit Lanjut', 'Prof. Suparman', 'Gadjah Mada Press', 2019, 5),
@@ -34,7 +34,7 @@ INSERT INTO buku (id_kategori, id_rak, judul, penulis, penerbit, tahun, stok) VA
 (7, 9, 'Filsafat Logika Dasar', 'Rizal Mustansyir', 'Pustaka Pelajar', 2016, 7),
 (10, 10, 'Hukum Pidana Cyber Indonesia', 'Dr. Hendra Saputra', 'Rajawali Pers', 2022, 9);
 
-INSERT INTO peminjaman (id_buku, id_petugas, nama_peminjam, tanggal_pinjam, tanggal_jatuh_tempo, tanggal_kembali, status, denda) VALUES
+INSERT INTO peminjaman ("id_buku", "id_petugas", "nama_peminjam", "tanggal_pinjam", "tanggal_jatuh_tempo", "tanggal_kembali", "status", "denda") VALUES
 (1, 2, 'Aditya Pratama', '2024-01-10', '2024-01-17', '2024-01-16', 'Kembali', 0),
 (2, 4, 'Bunga Citra', '2024-01-12', '2024-01-19', '2024-01-22', 'Kembali', 6000),
 (3, 2, 'Cahyo Utomo', '2024-01-15', '2024-01-22', '2024-01-20', 'Kembali', 0),
