@@ -41,37 +41,27 @@ WHERE product = (
 );
 
 -- Example 4
--- BASIC
-SELECT s.product_id, p.name, s.quantity, s.quantity * p.price AS total_sales
-FROM Sales s
-JOIN Products p ON s.product_id = p.id
-WHERE s.quantity >= 7;
 
 -- CTE
 WITH rekap_sales AS (
-  SELECT s.product_id, p.name, s.quantity, s.quantity * p.price AS total_sales
+  SELECT s.product_id, SUM(s.quantity) AS total
   FROM Sales s
   JOIN Products p ON s.product_id = p.id
-) 
-
-SELECT *
-FROM rekap_sales
-WHERE quantity IN (
-  SELECT quantity
-  FROM rekap_sales
-  WHERE quantity >= 7
-);
-
--- SUB Query
-SELECT *
-FROM (
-  SELECT s.product_id, p.name, s.quantity, s.quantity * p.price AS total_sales
-  FROM Sales s
-  JOIN Products p ON s.product_id = p.id
+  GROUP BY s.product_id
+  HAVING SUM(s.quantity) >= 7
 )
-WHERE quantity IN (
-  SELECT s.quantity
-  FROM Sales s
-  JOIN Products p ON s.product_id = p.id
-  WHERE s.quantity >= 7
-);
+
+SELECT p.id, p.name, rs.total, rs.total * p.price AS amount
+FROM rekap_sales rs
+JOIN Products p ON rs.product_id = p.id;
+
+-- SUB QUERY
+SELECT p.id, p.name, rs.total, rs.total * p.price AS amount
+FROM (
+    SELECT s.product_id, SUM(s.quantity) AS total
+    FROM Sales s
+    JOIN Products p ON s.product_id = p.id
+    GROUP BY s.product_id
+) rs
+JOIN Products p ON rs.product_id = p.id
+WHERE rs.total >= 7;
