@@ -13,8 +13,8 @@ VALUES
     ('Event B', '2024-01-05'),
     ('Event C', '2024-01-10');
 
-SELECT e.event_id, e.event_name Event, e.start_date, string_agg(CONCAT(ev.event_name, ' ', ev.start_date), ', ') "Next Event"
+SELECT e.event_id, e.event_name Event, e.start_date, STRING_AGG(CONCAT(ev.event_name, ' ', ev.start_date), ', ') "Next Event"
 FROM events e
-FULL JOIN events ev ON e.start_date < ev.start_date
+LEFT JOIN events ev ON e.start_date < ev.start_date
 GROUP BY e.event_id
 ORDER BY e.event_id;
